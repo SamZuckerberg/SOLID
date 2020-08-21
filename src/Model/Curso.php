@@ -2,7 +2,7 @@
 
 namespace src\Model;
 
-class Curso
+class Curso implements Pontuavel, Assistivel
 {
     private string $nome;
     private $videos;
@@ -33,5 +33,23 @@ class Curso
     public function recuperarVideos(): array
     {
         return $this->videos;
+    }
+
+    /**
+     * @return integer
+     */
+    public function recuperarPontuacao(): int
+    {
+        return 100;
+    }
+
+    /**
+     * @return void
+     */
+    public function assistir(): void
+    {
+        foreach ($this->videos as $video) {
+            $video->assistir();
+        }
     }
 }
